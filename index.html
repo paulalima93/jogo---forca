@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Forca - JS ✨</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1> Jogo da Forca </h1>
+
+        <!-- Painel superior para o contador de vidas -->
+        <div class="painel">
+            <span id="vidas-texto">❤️ Vidas: 6</span>
+        </div>
+
+        <!-- Onde os tracinhos (_ _ _) da palavra vão aparecer -->
+        <div id="palavra-secreta" class="palavra"></div>
+        
+        <button class="btn-dica" id="botao-dica">💡 Ver Dica</button>
+        <div class="area-dica" id="dica"></div>
+
+        <!-- O container do teclado que ainda está vazio -->
+        <div id="teclado"></div>
+
+        <!-- Mensagem de Vitória ou Game Over -->
+        <p id="mensagem_final"></p>
+
+        <button id="btn-reiniciar">Jogar Novamente</button>
+
+    </div>
+
+    <script src="dados.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
