@@ -28,7 +28,7 @@ body {
 /* Cartão principal */
 .container {
     width: 90%;
-    max-width: 600px;
+    max-width: 800px;
     padding: 52px 28px 28px;
     background-color: var(--cor-container);
     border: 1px solid var(--cor-borda);
