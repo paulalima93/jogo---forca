@@ -143,11 +143,13 @@ h1 {
     transition: background-color 0.2s, color 0.2s;
 }
 
+/* Garante que o hover só funcione se o botão NÃO estiver desativado */
 .btn-teclado:hover:not(:disabled) {
     background-color: var(--cor-azul);
     color: var(--cor-texto);
 }
 
+/* O estilo do botão desabilitado */
 .btn-teclado:disabled {
     opacity: 0.35;
     cursor: not-allowed;
@@ -182,6 +184,15 @@ h1 {
 
 #btn-reiniciar:hover {
     background-color: var(--cor-azul-hover);
+}
+
+.area-dica {
+    background-color: rgba(245, 158, 11, 0.1);
+    border: 1px solid #f59e0b;
+    color: #f59e0b;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1rem;
 }
 
 /* Responsividade para celulares */

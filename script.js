@@ -34,6 +34,19 @@ function gerarTeclado() {
 }
 
 function novoJogo() {
+    // Reset do Estado
+    vidas = 6; 
+    document.getElementById("vidas-texto").innerText = "Vidas: " + vidas; 
+    document.getElementById("mensagem_final").innerText = ""; 
+    
+    // Reseta a área da dica (Esconde o texto e traz o botão de volta)
+    document.getElementById("dica").innerText = ""; 
+    document.getElementById("dica").style.display = "none";
+    document.getElementById("botao-dica").style.display = "inline-block";
+    
+    // Destrói os 26 botões antigos limpando o HTML da div
+    document.getElementById("teclado").innerHTML = "";
+
     // Sorteia um número aleatório do tamanho da nossa lista
     const index = Math.floor(Math.random() * listaPalavras.length);
 
@@ -96,7 +109,36 @@ function verificarChute(letraClicada) {
 
     // Como algo mudou, atualiza os tracinhos da tela
     atualizarTela();
+
+    checarFimDeJogo();
 }
+
+function checarFimDeJogo() {
+    const display = document.getElementById("palavra-secreta").innerText;
+    const mensagem = document.getElementById("mensagem_final");
+
+    if (vidas === 0) {
+        // Derrota: mostra a mensagem e a palavra que estava escondida
+        mensagem.innerText = "Game Over! A palavra era: " + palavraAtual;
+        travarTeclado();
+
+    } else if (display.includes("_") === false) {
+        // Vitória: se NÃO TEM tracinho no display, o jogador ganhou
+        mensagem.innerText = "Parabéns! Você adivinhou a palavra!";
+        travarTeclado();
+    }
+}
+
+function travarTeclado() {
+    // pega todos os botões que têm a classe 'btn-teclado'
+    const botoes = document.querySelectorAll(".btn-teclado");
+    
+    // passa por cada um deles e desativa
+    botoes.forEach(botao => {
+        botao.disabled = true;
+    });
+}
+
 
 document.addEventListener("keydown", (evento) => {
     // captura a tecla que o jogador apertou e transforma em MAIÚSCULA
@@ -120,6 +162,19 @@ document.addEventListener("keydown", (evento) => {
         }
     }
 });
+
+function mostrarDica() {
+    const dica = document.getElementById('dica');
+    const botao_dica = document.getElementById('botao-dica');
+
+    dica.innerText = "Dica: " + dicaAtual;
+    dica.style.display = 'block'; // Mostra o texto
+    botao_dica.style.display = 'none'; // Esconde o botão
+}
+
+// Ligando os cliques aos botões correspondentes:
+document.getElementById("botao-dica").onclick = mostrarDica;
+document.getElementById("btn-reiniciar").onclick = novoJogo;
 
 //inicia o jogo
 novoJogo();
